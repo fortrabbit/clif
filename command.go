@@ -144,7 +144,7 @@ func (this *Command) Parse(args []string) error {
 			// not a flag: must have value
 			// is a flag: must not have non-flag value
 			if !o.Flag && !vv {
-				if i+1 == argc || args[i+1][0:1] == "-" {
+				if i+1 == argc || (len(args[i+1]) >= 1 && args[i+1][0:1] == "-") {
 					return fmt.Errorf("Missing value for option \"%s\"", a)
 				} else {
 					i++
